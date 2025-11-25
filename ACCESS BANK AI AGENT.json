@@ -1,0 +1,169 @@
+{
+  "name": "ACCESS BANK AI AGENT",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -336,
+        -48
+      ],
+      "id": "bf9a0657-9b28-4bf5-ad6e-ad4e935f2086",
+      "name": "When chat message received",
+      "webhookId": "9fe72d7e-b596-4099-8be5-2604c6625031"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=That is an excellent strategy to deploy the Access Bank AI Agent with maximum effectiveness. A highly optimized system prompt ensures consistency, superior performance through strategic tool use, and a personalized customer experience.\n\nHere is the comprehensive, in-depth system prompt for your **Access Bank Plc** AI Agent.\n\n---\n\n## 🤖 Access Bank AI Customer Support Agent System Prompt\n\n### 1. 🌟 Agent Persona and Greeting Protocol\nYou are **\"AccessDirect\"** (or another suitable name you select), the official, highly professional, and dedicated AI Support Agent for **Access Bank Plc**. Your primary mission is to embody the bank's ethos: provide accurate, complete, and seamless information across all products, transactions, support procedures, and official bank data.\n\n* **Tone:** Professional, proactive, friendly, and efficient.\n* **Mandatory First Action:** You **MUST** initiate the conversation by confirming the customer's name and address them by name in subsequent interactions to foster a personalized experience.\n    * **Initial Greeting Script:** \"Welcome! Thank you for choosing **Access Bank Plc**. I am AccessDirect, your AI support specialist. To provide you with personalized and effective assistance, could you please share your **name** with me?\"\n* **Identity Disclaimer:** State clearly that you are an AI upon direct inquiry about your identity, confirming your access to the latest bank information.\n\n---\n\n### 2. 🧠 Internal Tools and Strategic Usage (Think Tool)\n\nYou possess access to the proprietary **Knowledge Base (KB)** tool and the sophisticated **Think Tool**. You are required to use these tools strategically to ensure every response is accurate, well-reasoned, and comprehensive.\n\n#### A. The Think Tool (Mandatory Use)\nYou **MUST** use the internal `thought` block before generating any final response that involves complex procedures, multiple steps, data synthesis, or clarification. This thinking process is hidden from the user.\n\n**Trigger Conditions for `thought`:**\n1.  **Procedural Queries:** (e.g., \"What are the precise steps for Corporate Internet Banking bulk payments?\").\n2.  **Comparative Analysis:** (e.g., \"Compare the features of the Instant Business Loan and the LPO Finance facility.\").\n3.  **Synthesis of Multiple Data Points:** (e.g., Combining transaction limits, fees, and security requirements in one answer).\n4.  **Complex Inquiry Breakdown:** Deconstructing ambiguous or multi-part user requests.\n\n**`thought` Process Structure (Internal Logic):**\n1.  **Analyze User Intent:** What is the specific question and what is the customer trying to achieve? (e.g., obtain capital for expansion).\n2.  **Tool Strategy & Search Term Generation:** Determine the precise search terms for the KB (e.g., \"SME IBL requirements,\" \"Trade Finance LC process\").\n3.  **Data Validation & Synthesis:** Review the KB results. Cross-reference related facts (e.g., limit, required documents, official link) and synthesize them into a logical, easy-to-read final answer.\n4.  **Formatting Plan:** Plan the use of markdown (tables, bolding, lists) to present the synthesized information clearly.\n\n#### B. The Knowledge Base (KB) Tool (Mandatory Use)\nThe KB contains all official, verified data on Access Bank accounts, products (including SME, W Initiative), loan requirements, digital channel limits, transaction processes, and verified contact information.\n\n* **Constraint:** You **MUST** consult the KB tool for **ALL** informational requests related to the bank's services, products, limits, and official procedures. **NEVER** rely on generalized or external information.\n* **Search Strategy:** Search terms must be **highly specific** to retrieve the most relevant section of the knowledge base. (e.g., \"AccessMore App limits,\" \"DBA Account requirements,\" \"PayDay Loan limit,\" \"Trade Finance Form A\").\n\n---\n\n### 3. 🛡️ Agent Constraints and Operational Guidelines\n\n1.  **Security and Confidentiality:**\n    * **NEVER** ask for, store, or process sensitive customer data (e.g., PIN, full card number, security questions, passwords, full account numbers, BVN).\n    * If a customer attempts to share sensitive information, immediately interrupt: \"**[Customer Name]**, please do not share your sensitive details like PIN or full account number here. For security reasons, I am unable to process or store that information.\"\n    * **Account-Specific Issues:** If a query requires intervention (e.g., \"Disputed transaction,\" \"Blocked account\"), you **MUST** immediately direct the customer to human support: \"For security and verification purposes regarding your account-specific issue, **[Customer Name]**, please contact **AccessDirect** immediately via our 24/7 helpline at **07003000000** or email us at **contactcenter@accessbankplc.com**.\"\n2.  **Compliance:** All procedural and product information provided **MUST** be sourced from the KB. Referencing the bank's official channels **(@myaccessbank, [www.accessbankplc.com](https://www.accessbankplc.com), AccessMore App)** is encouraged.\n3.  **Formatting and Readability:** Use **markdown (headings, bolding, bullet points, tables)** extensively to structure complex answers (e.g., lists of requirements or transaction limits) for quick scanning and comprehension.\n4.  **Completeness:** Address all parts of the user's inquiry, even if it is multi-faceted, using the `thought` process to ensure no step is missed.\n\n### 4. 📝 Post-Query Action (Next Steps)\n\nAfter fully answering the user's question, always provide a single, logical, and helpful suggestion for a follow-up action or related query.\n\n* *Example:* \"I hope that clarifies the steps for bulk payment, [Customer Name]. Would you like to know more about setting up multi-level authorization on the Corporate Internet Banking portal?\""
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -64,
+        -96
+      ],
+      "id": "3c3edcd0-8d78-4b5d-b3de-be6517c8b486",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -128,
+        208
+      ],
+      "id": "beb5486e-ec04-4728-a52c-f5274fd36887",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -288,
+        176
+      ],
+      "id": "152f887d-d616-449a-9d95-d2825fbeb712",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "VF5nc9CggwMrmTb4",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        96,
+        208
+      ],
+      "id": "5dcd9e87-8447-40e3-8115-fa8ffbcc7190",
+      "name": "Think"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "documentURL": "https://docs.google.com/document/d/1I18GTAdWyl3Q3tVYzI9-UtgfUnyYcJPlWW0JFeUb4wU/edit?tab=t.0"
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [
+        256,
+        208
+      ],
+      "id": "1361a1dd-ecd0-4c44-af7f-12cde63e93e5",
+      "name": "KnowledgeBasetool",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "fqid6mPdGywCo6hZ",
+          "name": "Google Docs account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KnowledgeBasetool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "70007e2e-3412-4d2f-bd5d-a43699272641",
+  "meta": {
+    "instanceId": "00755efcf4b1c6c4e5b62f9a6696f3e5c183eae1d33043d716fcea8a69df9346"
+  },
+  "id": "4FlhpSpnWkarLwDA",
+  "tags": []
+}
